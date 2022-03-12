@@ -1,7 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 import { getAuth, createUserWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"
- const firebaseApp = initializeApp();
+
+const firebaseApp = initializeApp({
+  apiKey: 'AIzaSyDr2Hd5KlnXt1WDVup87_Gjp9S8-qHnfvM',
+  authDomain: 'reinielerica.web.app',
+  projectId: 'reinielerica',
+  storageBucket: 'gs://reinielerica.appspot.com/'
+});
+
 const db = getFirestore()
 const auth = getAuth()
 
@@ -40,8 +47,6 @@ document.getElementById('signup-form').addEventListener('submit', async function
     console.log(e)
     alert(e.message)
   }
-
-
   return false
 })
 
