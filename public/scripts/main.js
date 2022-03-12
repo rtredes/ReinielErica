@@ -8,4 +8,3 @@ async function init(){
   })
   console.log(firebase.auth.user)
 }
-init()
