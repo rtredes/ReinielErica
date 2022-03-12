@@ -6,13 +6,16 @@ html {
   --bg: black;
 }
 body {
-  background: red;
+  position: relative;
+  margin: 0;
+    
+  background-image: url(images/default.jpg);
 }
-#navigator {
+canvas{
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--bg);
+  width: 100vw;
+  height: 100vh;
+
 }
