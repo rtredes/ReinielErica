@@ -1,0 +1,13 @@
+service firebase.storage {
+  match /b/{bucket}/o {
+  
+    match /Public/{documents} {
+      allow read;
+      allow write: if request.auth.token.email = "rtredes2@gmail.com"
+    }
+    match /Private/{documents} {
+      allow read, write: if request.auth.token.email == "rtredes2@gmail.com" || request.auth.token.email = "arellano.ericajoy@gmail.com"
+    }
+  }
+}
+
