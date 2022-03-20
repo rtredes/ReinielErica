@@ -1,10 +1,8 @@
 import firebase from './firebase.js'
+import SignIn from './popups/signIn.js'
 
-async function init(){
-  console.log('signing in')
-  await firebase.signIn({
-    email: 'rtredes2@gmail.com',
-    pass: 'Rein&Eca@2021'
-  })
-  console.log(firebase.auth.user)
+try {
+const sign = new SignIn()
+} catch(e){
+  console.log(e)
 }

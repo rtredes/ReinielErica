@@ -3,7 +3,9 @@ import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-a
 import { 
   getFirestore, 
   doc, 
-  setDoc
+  setDoc,
+  collection,
+  getDocs,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 
 import { 
@@ -28,7 +30,8 @@ const credentials = initializeApp({
 const db = getFirestore()
 
 const auth = getAuth()
-const signIn = async function({provider,email,pass}){
+
+export const signIn = async function({provider,email,pass}){
   if(provider && typeof provider == 'object') {
     return await signInWithPopup(auth, provider)
   } else {
@@ -37,14 +40,15 @@ const signIn = async function({provider,email,pass}){
     )
   }
 }
-const authChanged = function(eventListener) {
+
+export const authChanged = function(eventListener) {
   onAuthStateChanged(auth, eventListener)
 }
 
 const storage = getStorage()
 
 export default {
-  db, doc, setDoc, 
+  db, doc, setDoc, collection, getDocs,  
   auth, signIn, authChanged,
   google: new GoogleAuthProvider(),
   storage

@@ -1,33 +1,10 @@
+@import 'defaults.css';
+@import 'comingSoon.css';
+
 html {
   font-size: 10px;
   --font: arial;
   --primaryColor: white;
   --accent: dodgerblue;
   --bg: black;
-}
-body {
-  position: relative;
-  margin: 0;
-  background-image: url('../images/landscape.jpg');
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-}
-canvas{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-h1 {
-  color: white;
-  margin: 4%;
-}
-
-@media screen and (max-width: 767px) {
-  body {
-    background-image: url('../images/default.webp');
-  }
 }
