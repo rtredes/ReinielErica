@@ -6,6 +6,6 @@ firebase.authChanged( async function(){
   await new SignIn()
   
   const budgetData = await firebase.getDocs(firebase.collection(firebase.db, `users/${uid}/budget`))
-  console.log(budgetData)
+  alert(budgetData)
   
 })
