@@ -1,13 +1,26 @@
 import firebase from '/scripts/firebase.js'
 import SignIn from '/scripts/popups/signIn.js'
 var uid = null
-firebase.authChanged( async function(){
-  if(!(uid = firebase.auth.currentUser.uid)) 
-  await new SignIn()
+import firebase from '/scripts/firebase.js'
+import SignIn from '/scripts/popups/signIn.js'
+
+
+var uid = null
+
+firebase.onAuthStateChanged(firebase.auth, init)
+
+async function init(){
+  if (!firebase.auth.currentUser) {
+    new SignIn()
+    return false
+  }else{
+    uid = firebase.auth.currentUser.uid
+  }
+  
   try {
   const budgetData = await firebase.getDocs(firebase.collection(firebase.db, `users/${uid}/budget`))
   alert(budgetData)
-  } catch(e) {
+  } catch (e) {
     alert(e)
   }
-})
+}
