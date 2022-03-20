@@ -8,8 +8,6 @@ firebase.authChanged( async function(){
   const budgetData = await firebase.getDocs(firebase.collection(firebase.db, `users/${uid}/budget`))
   alert(budgetData)
   } catch(e) {
-    console.log(e)
+    alert(e)
   }
-  
-  
 })
