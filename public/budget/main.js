@@ -4,8 +4,12 @@ var uid = null
 firebase.authChanged( async function(){
   if(!(uid = firebase.auth.currentUser.uid)) 
   await new SignIn()
-  
+  try {
   const budgetData = await firebase.getDocs(firebase.collection(firebase.db, `users/${uid}/budget`))
   alert(budgetData)
+  } catch(e) {
+    console.log(e)
+  }
+  
   
 })
