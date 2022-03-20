@@ -1,0 +1,66 @@
+.fixed-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  backdrop-filter: blur(5px);
+}
+/* Form */
+button[type=submit].dynamic::before {
+  content: attr(defaultText);
+}
+button[type=submit].dynamic.loading::before {
+  content: attr(loadingText);
+}
+
+/*Login*/
+.login-wrap {
+  background: white;
+  width: auto;
+  max-width: 100%;
+  
+  padding: 25px 20px;
+  margin-top: 10%;
+  font-size: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+}
+.login-wrap .login-title {
+  margin: 0;
+  margin-bottom: 5%;
+}
+.login-wrap .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-wrap .input-wrap {
+  margin: 5px 0;
+  border: 1px solid dodgerblue;
+  border-radius: 9999px;
+  overflow: hidden;
+  padding: 2.5% 5%;
+  display: table;
+}
+.login-wrap .input-wrap input {
+  border: none;
+  outline: none;
+  padding-left: 1.55em;
+  width: auto;
+  width: 100%;
+}
+.login-wrap .login-form input[type=submit] {
+  margin-top: 3.5%;
+}
+.login-wrap .input-wrap i {
+  font-size: 1.25em;
+  position: absolute;
+  z-index: 1;
+}

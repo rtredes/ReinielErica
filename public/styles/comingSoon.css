@@ -1,0 +1,19 @@
+body {
+  position: relative;
+  margin: 0;
+  background-image: url('/images/landscape.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  margin: 4%;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    background-image: url('/images/default.webp');
+  }
+}
