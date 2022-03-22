@@ -1,55 +1,16 @@
-import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"
-
-import { 
-  getFirestore, 
-  doc, 
-  setDoc,
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
-
-import { 
-  getStorage
-} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js"
-
-import { 
-  getAuth, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
-  signInWithEmailAndPassword,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"
-
-const credentials = initializeApp({
-  apiKey: 'AIzaSyDr2Hd5KlnXt1WDVup87_Gjp9S8-qHnfvM',
-  authDomain: 'reinielerica.web.app',
-  projectId: 'reinielerica',
-  storageBucket: 'gs://reinielerica.appspot.com/'
-});
-
-const db = getFirestore()
-
-const auth = getAuth()
-
-export const signIn = async function({provider,email,pass}){
-  if(provider && typeof provider == 'object') {
-    return await signInWithPopup(auth, provider)
-  } else {
-    return await signInWithEmailAndPassword(
-      auth, email, pass
-    )
-  }
+const firebaseConfig = {
+  apiKey: "AIzaSyDr2Hd5KlnXt1WDVup87_Gjp9S8-qHnfvM",
+  authDomain: "reinielerica.firebaseapp.com",
+  projectId: "reinielerica",
+  storageBucket: "reinielerica.appspot.com",
+  messagingSenderId: "433389581410",
+  appId: "1:433389581410:web:e4581c6b061b21b1e4cd3b",
+  measurementId: "G-1L437CPGZQ"
 }
 
-export const authChanged = function(eventListener) {
-  onAuthStateChanged(auth, eventListener)
-}
+const init = firebase.initializeApp(firebaseConfig)
 
-const storage = getStorage()
-
-export default {
-  db, doc, setDoc, collection, getDocs,  
-  auth, signIn, authChanged,
-  google: new GoogleAuthProvider(),
-  storage
-}
+export const db = firebase.firestore()
+export const auth = firebase.auth()
+export const timestamp = firebase.firestore.Timestamp
+export const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

@@ -7,8 +7,12 @@
   <title>Budget</title>
   <link rel="stylesheet" href="main.css">
   <script defer src="https://kit.fontawesome.com/077d2e0cbc.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script defer type="module" src="main.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <script src="main.js" defer type="module"></script>
 </head>
 <body>
   <div class="header">
@@ -19,7 +23,7 @@
     <div class="no-record">
       <canvas id="pie-chart"></canvas>
     </div>
-    <button>Add new record</button>
+    <button id="add">Add new record</button>
   </div>
 </body>
 
