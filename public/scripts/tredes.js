@@ -1,4 +1,4 @@
-export default {
+const tredes = {
   'element': function (tagName, attributes){
     var el = document.createElement(tagName)
     
@@ -23,6 +23,15 @@ export default {
             value.target.childNodes[value.index]
           )
         break;
+        case 'options':
+        value.forEach(val => {
+          tredes.element('option', {
+            'value': val.value,
+            'innerText': val.text,
+            'append': el
+          })
+        })
+        break;
         default: el.setAttribute(attr, value)
         break;
       }
@@ -34,3 +43,5 @@ export default {
     return parent.append(document.createTextNode(text))
   }
 }
+
+export default tredes

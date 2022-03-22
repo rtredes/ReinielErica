@@ -1,5 +1,4 @@
 import tredes from '../tredes.js'
-import { signIn } from '../firebase.js'
 import alert2 from './alert.js'
 
 const element = tredes.element
@@ -105,8 +104,8 @@ class inputWrap {
     })
     this.icon = icon
     this.input = input
-    this.input.addEventListener('input', () => {
-      this.input.setCustomValidity('')
+    this.input.addEventListener('input',function() {
+      this.setCustomValidity('')
     })
     
     this.wrap.append(this.icon)
