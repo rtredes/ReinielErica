@@ -1,5 +1,6 @@
 import tredes from '../tredes.js'
 import alert2 from './alert.js'
+import {auth} from '../firebase.js'
 
 const element = tredes.element
 export default class {
@@ -67,10 +68,7 @@ export default class {
     submit.classList.add('loading')
 
     try {
-      const user = await signIn({
-        email: email.value,
-        pass: pw.value
-      })
+      const user = await auth.signInWithEmailAndPassword(email.value, pw.value)
       
       await alert2({
         'title': 'Success',
@@ -81,8 +79,9 @@ export default class {
 
     } catch (error) {
       submit.classList.remove('loading')
+      console.log(error)
       if (error.code = "auth/wrong-password") {
-        validation(pw, 'Incorrect Password')
+        validation(pw, 'Incorrect Passworde')
       } else {
         await alert2({
           'title': 'Error',

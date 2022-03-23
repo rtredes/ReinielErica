@@ -8,8 +8,11 @@ import {
   AddBudget
 } from "/scripts/firebase/budget.js"
 
+import signIn from '/scripts/popups/signIn.js'
+
+
 auth.onAuthStateChanged(async function() {
-  if (auth.currentUser.uid) {
+  if (auth.currentUser) {
     const dateStart = timestamp.now().toDate()
     dateStart.setDate(dateStart.getDate() - 6)
     dateStart.setHours(0, 0, 0, 0)
@@ -49,14 +52,13 @@ auth.onAuthStateChanged(async function() {
         chart.data.datasets.push(type)
         chart.update()
       }
-
     } catch (e) {
-      console.log(e.message)
+      console.log(e)
     }
 
   }
   else {
-    console.log('User Login Prompt')
+    const signin = new signIn()
   }
 })
 const ctx = document.getElementById('pie-chart').getContext('2d')
