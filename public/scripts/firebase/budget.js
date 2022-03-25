@@ -16,12 +16,11 @@ export function budgetCollection(
   const month = months[date.getMonth()]
   const day = date.getDate()
   const year = date.getFullYear()
-  const path = `users/${uid}/budget/${year}/months/${month}/days/${day}/records`
+  const path = `users/${uid}/budget/${year}/months/${month}/records`
 
   return db.collection(path)
 }
 
-console.log()
 
 export class AddBudget {
   constructor() {
@@ -72,7 +71,7 @@ export class AddBudget {
           { 'text': 'Select One', 'value': '' },
           { 'text': 'Commute', 'value': 'commute' },
           { 'text': 'Food', 'value': 'food' },
-          { 'text': 'Essential', 'value': 'Essential' },
+          { 'text': 'Essential', 'value': 'essential' },
           { 'text': 'Other', 'value': 'other' },
         ]
       }), this.form
