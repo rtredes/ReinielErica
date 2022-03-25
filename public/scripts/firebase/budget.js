@@ -21,7 +21,7 @@ export function budgetCollection(
   return db.collection(path)
 }
 
-
+console.log()
 
 export class AddBudget {
   constructor() {

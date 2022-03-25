@@ -10,7 +10,7 @@ import {
 
 import signIn from '/scripts/popups/signIn.js'
 
-
+console.log()
 auth.onAuthStateChanged(async function() {
   if (auth.currentUser) {
     const dateStart = timestamp.now().toDate()
