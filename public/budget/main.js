@@ -22,17 +22,17 @@ auth.onAuthStateChanged(async function() {
       outcome: {
         label: 'Outcome',
         data: [0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: '#ff6961',
+        backgroundColor: '#e75757',
       },
       income: {
         label: 'Income',
         data: [0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: 'blue',
+        backgroundColor: '#79ea86',
       },
       savings: {
         label: 'Savings',
         data: [0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: 'green',
+        backgroundColor: '#649ff0',
       }
     }
 
@@ -40,22 +40,22 @@ auth.onAuthStateChanged(async function() {
       commute: {
         label: 'Commute',
         data: [0,0,0,0,0,0,0],
-        backgroundColor: '#ff6961',
+        backgroundColor: '#92acd5',
       },
       food: {
         label: 'Food',
         data: [0,0,0,0,0,0,0],
-        backgroundColor: 'green',
+        backgroundColor: '#dbf8cd',
       },
       essential: {
         label: 'Essential',
         data: [0,0,0,0,0,0,0],
-        backgroundColor: '#ff6961',
+        backgroundColor: '#b2d1cc',
       },
       other: {
         label: 'Other',
         data: [0,0,0,0,0,0,0],
-        backgroundColor: 'blue',
+        backgroundColor: '#edde81',
       }
     }
 
