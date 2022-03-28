@@ -7,27 +7,33 @@
   <title>Budget</title>
   <link rel="stylesheet" href="main.css">
   <script defer src="https://kit.fontawesome.com/077d2e0cbc.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
-    <script src="main.js" defer type="module"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+  <script src="main.js" defer type="module"></script>
 </head>
+
 <body>
-  <div class="header">
-    <h1>Budget</h1>
-  </div>
-  <div class="body">
-    <h2>Weekly Expenses</h2>
-    <div class="no-record">
-      <canvas id="pie-chart"></canvas>
+  <section>
+    <div class="row">
+      <div class="col">
+        <h1>
+          Budget
+        </h1>
+      </div>
     </div>
-    <button id="add">Add new record</button>
-    <div class="no-record">
-      <canvas id="pie-chart2"></canvas>
+  </section>
+  <section>
+    <div class="row">
+      <div class="column">
+        <canvas id="typesChart"></canvas>
+        <canvas id="categoriesChart"></canvas>
+        <button id="add">Add Data</button>
+      </div>
     </div>
-  </div>
+  </section>
 </body>
 
 </html>

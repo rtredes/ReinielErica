@@ -10,7 +10,6 @@ import {
 
 import signIn from '/scripts/popups/signIn.js'
 
-
 auth.onAuthStateChanged(async function() {
   if (auth.currentUser) {
     const dateStart = timestamp.now().toDate()
@@ -19,19 +18,22 @@ auth.onAuthStateChanged(async function() {
     const ts = timestamp.fromDate(dateStart)
 
     var tree = {
-      outcome: {
-        label: 'Outcome',
-        data: [0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: '#e75757',
-      },
       income: {
         label: 'Income',
         data: [0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: '#79ea86',
+        borderColor: '#79ea86',
+        backgroundColor: '#79ea86'
+      },
+      outcome: {
+        label: 'Outcome',
+        data: [0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#e75757',
+        backgroundColor: '#e75757',
       },
       savings: {
         label: 'Savings',
         data: [0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#649ff0',
         backgroundColor: '#649ff0',
       }
     }
@@ -39,23 +41,27 @@ auth.onAuthStateChanged(async function() {
     var tree2 = {
       commute: {
         label: 'Commute',
-        data: [0,0,0,0,0,0,0],
+        data: [0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#92acd5',
         backgroundColor: '#92acd5',
       },
       food: {
         label: 'Food',
-        data: [0,0,0,0,0,0,0],
+        data: [0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#dbf8cd',
         backgroundColor: '#dbf8cd',
       },
       essential: {
         label: 'Essential',
-        data: [0,0,0,0,0,0,0],
+        data: [0, 0, 0, 0, 0, 0, 0], 
+        borderColor: '#b2d1cc',
         backgroundColor: '#b2d1cc',
       },
       other: {
         label: 'Other',
-        data: [0,0,0,0,0,0,0],
-        backgroundColor: '#edde81',
+        data: [0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#edde81',
+        backgrounColor: '#edde81',
       }
     }
 
@@ -73,60 +79,49 @@ auth.onAuthStateChanged(async function() {
           type.data[dateRange] += Number(value)
           tree2[category].data[dateRange] += Number(value)
         })
-        
+
         chart.data.datasets.push(type)
-        chart.update()
       }
-      for(let i in tree2) {
-        console.log(tree2[i])
+      for (let i in tree2) {
         chart2.data.datasets.push(tree2[i])
-        
-        chart2.update()
       }
+      chart.update()
+      chart2.update()
     } catch (e) {
       console.log(e)
     }
-    
-
   }
   else {
     const signin = new signIn()
   }
 })
+const options = {
+  responsive: true,
+  plugins: {
+    title: {
+      display: false,
+      text: 'Weekly Expenses'
+    }
+  },
+}
 
-const ctx = document.getElementById('pie-chart').getContext('2d')
+const ctx = document.getElementById('typesChart').getContext('2d')
 const config = {
   type: 'bar',
   data: {
     labels: ['6d ago', '5d ago', '4d ago', '3d ago', '2d ago', '1d ago', 'Today']
   },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Weekly Expenses'
-      }
-    },
-  },
+  options
 };
 const chart = new Chart(ctx, config)
 
-const ctx2 = document.getElementById('pie-chart2').getContext('2d')
+const ctx2 = document.getElementById('categoriesChart').getContext('2d')
 const config2 = {
   type: 'bar',
   data: {
     labels: ['6d ago', '5d ago', '4d ago', '3d ago', '2d ago', '1d ago', 'Today']
   },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Today Expenses'
-      }
-    },
-  },
+  options
 };
 const chart2 = new Chart(ctx2, config2)
 
