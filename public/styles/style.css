@@ -1,5 +1,4 @@
 @import 'defaults.css';
-@import 'comingSoon.css';
 
 html {
   font-size: 10px;
@@ -7,4 +6,5 @@ html {
   --primaryColor: white;
   --accent: dodgerblue;
   --bg: black;
+  --buttonBg: black;
 }

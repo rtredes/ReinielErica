@@ -15,7 +15,7 @@
   <script src="main.js" defer type="module"></script>
 </head>
 
-<body>
+<body class="loading">
   <section>
     <div class="row">
       <div class="col">
@@ -25,12 +25,19 @@
       </div>
     </div>
   </section>
-  <section>
+  <section class="charts">
     <div class="row">
       <div class="column">
-        <canvas id="typesChart"></canvas>
-        <canvas id="categoriesChart"></canvas>
-        <button id="add">Add Data</button>
+        <div class="gradient-border border-animated canvas-wrap" status="Fetching Data..">
+          <canvas id="typesChart"></canvas>
+          <loader>Fetching Data</loader>
+        </div>
+        <div class="gradient-border border-animated canvas-wrap" status="Fetching Data..">
+            <canvas id="categoriesChart"></canvas>
+            <loader>Fetching Data..</loader>
+        </div>
+        
+        <button id="add" class="gradient-border">Add Data</button>
       </div>
     </div>
   </section>

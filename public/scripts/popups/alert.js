@@ -5,16 +5,17 @@ export default function ({
     title = 'Alert', 
     message = 'This is an alert', 
     button = 'Okay',
+    containerClass = 'fixed-wrap',
     parent = document.body
   }){
     
-  const fixedContainer = element('div', {
-    'class': 'fixed-container',
+  const elementContainer = element('div', {
+    'class': containerClass,
     'append': parent
   })
   const container = element('div', {
-    'class': 'alert-container',
-    'append': fixedContainer
+    'class': 'alert-container gradient-border border-animated',
+    'append': elementContainer
   })
   const _title = element('h3', {
     'class': 'alert-title',
@@ -28,12 +29,12 @@ export default function ({
   })
   
   return new Promise(resolve => {
-    const _button = element('p', {
-      'class': 'alert-button',
+    const _button = element('button', {
+      'class': 'alert-button gradient-border',
       'event': {
         'click': () => {
           resolve()
-          fixedContainer.remove()
+          elementContainer.remove()
         }
       },
       'innerText': button,

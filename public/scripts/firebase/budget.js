@@ -30,7 +30,7 @@ export class AddBudget {
     })
 
     this.wrap = element('div', {
-      'class': 'popup-wrap',
+      'class': 'popup-wrap gradient-border border-animated',
       'append': this.fixedWrap
     })
     this.title = element('h3', {
@@ -54,7 +54,6 @@ export class AddBudget {
         'required': '',
         'options': [
           { 'text': 'Select One', 'value': '' },
-          { 'text': 'Income', 'value': 'income' },
           { 'text': 'Outcome', 'value': 'outcome' },
           { 'text': 'Savings', 'value': 'savings' }
         ]
@@ -90,10 +89,13 @@ export class AddBudget {
     )
 
     this.submit = element('button', {
+      'class': 'gradient-border border-animated',
       'type': 'submit',
-      'class': 'dynamic',
-      'defaultText': 'Submit',
-      'loadingText': 'Loading.',
+      'loading': function(isLoading){
+        if(isLoading) this.innerText = 'Please wait.'
+        else this.innerText = 'Submit'
+      },
+      'innerText': 'Submit',
       'append': this.form
     })
   }
@@ -108,7 +110,7 @@ export class AddBudget {
     const category = this.categoryWrap.input.value
     const value = this.valueWrap.input.value
 
-    submit.classList.add('loading')
+    submit.innerText = submit.loadingText
 
     try {
       const toFireStore = await budgetCollection()

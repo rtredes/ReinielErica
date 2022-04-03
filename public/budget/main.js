@@ -10,6 +10,9 @@ import {
 
 import signIn from '/scripts/popups/signIn.js'
 
+document.body.classList.remove('loading')
+
+
 auth.onAuthStateChanged(async function() {
   if (auth.currentUser) {
     const dateStart = timestamp.now().toDate()
@@ -18,12 +21,6 @@ auth.onAuthStateChanged(async function() {
     const ts = timestamp.fromDate(dateStart)
 
     var tree = {
-      income: {
-        label: 'Income',
-        data: [0, 0, 0, 0, 0, 0, 0],
-        borderColor: '#79ea86',
-        backgroundColor: '#79ea86'
-      },
       outcome: {
         label: 'Outcome',
         data: [0, 0, 0, 0, 0, 0, 0],
@@ -53,7 +50,7 @@ auth.onAuthStateChanged(async function() {
       },
       essential: {
         label: 'Essential',
-        data: [0, 0, 0, 0, 0, 0, 0], 
+        data: [0, 0, 0, 0, 0, 0, 0],
         borderColor: '#b2d1cc',
         backgroundColor: '#b2d1cc',
       },
@@ -77,14 +74,21 @@ auth.onAuthStateChanged(async function() {
           const { timestamp, value, category } = d.data()
           const dateRange = Math.floor((timestamp.toDate() - dateStart) / 1000 / 60 / 60 / 24)
           type.data[dateRange] += Number(value)
-          tree2[category].data[dateRange] += Number(value)
+
+          if (i != 'savings')
+            tree2[category].data[dateRange] += Number(value)
         })
 
         chart.data.datasets.push(type)
       }
+
       for (let i in tree2) {
         chart2.data.datasets.push(tree2[i])
       }
+      
+      [...document.querySelectorAll('.charts canvas + loader')].forEach(loader => {
+        loader.remove()
+      })
       chart.update()
       chart2.update()
     } catch (e) {
@@ -100,9 +104,9 @@ const options = {
   plugins: {
     title: {
       display: false,
-      text: 'Weekly Expenses'
+      text: 'Weekly Expenses',
     }
-  },
+  }
 }
 
 const ctx = document.getElementById('typesChart').getContext('2d')
