@@ -28,7 +28,6 @@
 }
 
 /* Alert Wrap, Popup Wrap */
-.alert-container,
 .popup-wrap{
   width: 100%;
   max-width: 320px;
@@ -43,23 +42,53 @@
   backdrop-filter: blur(5px);
 }
 
-.alert-title,
-.popup-title{
+.popup-wrap .title{
   font-size: 1.5em;
   margin: 1% 0 8%;
 }
 
-.alert-message{
+.popup-wrap .message{
   font-size: .8em;
   margin: 1% 0 10%;
 }
-.alert-button {
+.popup-wrap .button {
   font-size: .7em;
 }
 
-/* Popup */
 .popup-wrap button[type=submit] {
-    margin: 8% 0 0 0;
+    margin: 10% 0 4% 0;
+    font-weight: bold;
+}
+.popup-wrap .form {
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+  
+}
+.popup-wrap .input {
+  width: 80%;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: .25em 0;
+  
+}
+.popup-wrap .input i{
+  position: absolute;
+  left: .1em;
+  font-size: 1em;
+}
+.popup-wrap .input input {
+  padding: .75em 1em .75em 2em;
+  background: #0000;
+  width: 100%;
+  color: white;
+  border: none;
+  outline: none;
 }
 
 /* Gradient border */
@@ -70,7 +99,7 @@
   background-clip: content-box;
 }
 .gradient-border.border-animate::before{
-  animation: gradientBgMove 6s ease infinite;
+  animation: gradientBgMove 6s ease infinite alternate;
 }
 .gradient-border::before {
   content: '';
@@ -98,15 +127,13 @@
   z-index: -1;
   border-radius: inherit;
 }
-
-@keyframes gradientBgMove{
-  to {
-    background-position-x: 100%;
-  }
+.gradient-border.bottom::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 1px;
 }
-
 /* Loader */
-
 loader {
   background: var(--gradientBorder);
   background-clip: text;
@@ -120,4 +147,10 @@ loader {
   transform: translate(-50%, -50%);
   font-size: 1.5em;
   animation: gradientBgMove 2s ease infinite alternate;
+}
+
+/* FadeOut */
+
+.fadingOut {
+  animation: fadingOut 1s ease;
 }

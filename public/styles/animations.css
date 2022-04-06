@@ -15,3 +15,15 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes gradientBgMove{
+  to {
+    background-position-x: 100%;
+  }
+}
+
+@keyframes fadingOut{
+  to{
+    opacity: 0;
+  }
+}

@@ -1,7 +1,7 @@
 @import 'custom.css';
 html {
   --black: #181A2D;
-  --gradientBorder: linear-gradient(90deg, yellow, orange, red);
+  --gradientBorder: linear-gradient(120deg, red, orange, yellow);
 }
 html,
 body {
@@ -67,6 +67,9 @@ body>section>div.row>div.col {
     flex-direction: column;
   }
 }
+
+/* Button */
+
 
 button {
   padding: .5em 2.5em;

@@ -91,10 +91,8 @@ export class AddBudget {
     this.submit = element('button', {
       'class': 'gradient-border border-animated',
       'type': 'submit',
-      'loading': function(isLoading){
-        if(isLoading) this.innerText = 'Please wait.'
-        else this.innerText = 'Submit'
-      },
+      'loadingText': 'Please wait.',
+      'defaultText': 'Submit',
       'innerText': 'Submit',
       'append': this.form
     })
@@ -102,7 +100,8 @@ export class AddBudget {
   destroy() {
     this.fixedWrap.remove()
   }
-
+  
+  
   async addToFirestore(e) {
     e.preventDefault()
     const submit = this.submit
@@ -127,8 +126,7 @@ export class AddBudget {
       this.destroy()
 
     } catch (error) {
-      submit.classList.remove('loading')
-      
+      submit.innerText = submit.defaultText
         await alert2({
           'title': 'Error',
           'message': error.message,

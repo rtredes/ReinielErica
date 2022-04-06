@@ -1,6 +1,6 @@
 import tredes from '../tredes.js'
 import alert2 from './alert.js'
-import {auth} from '../firebase.js'
+import { auth } from '../firebase.js'
 
 const element = tredes.element
 export default class {
@@ -11,16 +11,16 @@ export default class {
     })
 
     this.wrap = element('div', {
-      'class': 'login-wrap',
+      'class': 'popup-wrap login-wrap gradient-border border-animate',
       'append': this.fixedWrap
     })
     this.title = element('h3', {
-      'class': 'login-title',
+      'class': 'title',
       'innerText': 'Login',
       'append': this.wrap
     })
     this.form = element('form', {
-      'class': 'login-form',
+      'class': 'form',
       'event': {
         'submit': (e) => this.login(e)
       },
@@ -49,15 +49,18 @@ export default class {
 
     this.submit = element('button', {
       'type': 'submit',
-      'class': 'dynamic',
-      'defaultText': 'Sign In',
-      'loadingText': 'Signing.',
+      'class': 'button gradient-border',
+      'innerText': 'Login',
       'append': this.form
     })
   }
 
   destroy() {
-    this.fixedWrap.remove()
+    this.fixedWrap.classList.add('fadingOut')
+    this.fixedWrap.onanimationend = () => {
+      this.fixedWrap.remove()
+
+    }
   }
 
   async login(e) {
@@ -65,23 +68,25 @@ export default class {
     const submit = this.submit
     const pw = this.passwordWrap.input
     const email = this.emailWrap.input
-    submit.classList.add('loading')
-
+    submit.innerText = "Please wait."
+    submit.disabled = true
+    
     try {
       const user = await auth.signInWithEmailAndPassword(email.value, pw.value)
-      
+
       await alert2({
         'title': 'Success',
         'message': 'Signed in successfully'
       })
-      
+
       this.destroy()
 
     } catch (error) {
-      submit.classList.remove('loading')
-      console.log(error)
+      submit.innerText = "Login"
+      submit.disabled = false
+      
       if (error.code = "auth/wrong-password") {
-        validation(pw, 'Incorrect Passworde')
+        validation(pw, 'Incorrect Password')
       } else {
         await alert2({
           'title': 'Error',
@@ -98,15 +103,15 @@ export default class {
 class inputWrap {
   constructor(icon, input, parent) {
     this.wrap = element('div', {
-      'class': 'input-wrap',
+      'class': 'input gradient-border bottom border-animate',
       'append': parent
     })
     this.icon = icon
     this.input = input
-    this.input.addEventListener('input',function() {
+    this.input.addEventListener('input', function() {
       this.setCustomValidity('')
     })
-    
+
     this.wrap.append(this.icon)
     this.wrap.append(this.input)
   }
@@ -116,3 +121,12 @@ function validation(el, msg) {
   el.setCustomValidity(msg)
   el.reportValidity()
 }
+
+
+
+/* Load the Css */
+const link = element('link', {
+  'rel': 'stylesheet',
+  'href': '/styles/custom/signIn.css',
+  'append': document.head
+})

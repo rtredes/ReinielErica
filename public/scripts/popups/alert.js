@@ -14,27 +14,31 @@ export default function ({
     'append': parent
   })
   const container = element('div', {
-    'class': 'alert-container gradient-border border-animated',
+    'class': 'popup-wrap alert-wrap gradient-border border-animated',
     'append': elementContainer
   })
   const _title = element('h3', {
-    'class': 'alert-title',
+    'class': 'title',
     'innerText': title,
     'append': container
   })
   const _message = element('p', {
-    'class': 'alert-message',
+    'class': 'message',
     'innerText': message,
     'append': container
   })
   
   return new Promise(resolve => {
     const _button = element('button', {
-      'class': 'alert-button gradient-border',
+      'class': 'button gradient-border',
       'event': {
         'click': () => {
-          resolve()
-          elementContainer.remove()
+          
+          elementContainer.classList.add('fadingOut')
+          elementContainer.onanimationend = () => {
+            elementContainer.remove()
+            resolve()
+          }
         }
       },
       'innerText': button,
