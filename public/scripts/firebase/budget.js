@@ -34,12 +34,12 @@ export class AddBudget {
       'append': this.fixedWrap
     })
     this.title = element('h3', {
-      'class': 'popup-title',
+      'class': 'title',
       'innerText': 'Add Data',
       'append': this.wrap
     })
     this.form = element('form', {
-      'class': 'popup-form',
+      'class': 'form',
       'event': {
         'submit': (e) => this.addToFirestore(e)
       },
@@ -48,7 +48,7 @@ export class AddBudget {
 
     this.typeWrap = new inputWrap(
       element('i', {
-        'class': 'fas fa-envelope'
+        'class': 'fas fa-chart-line'
       }),
       element('select', {
         'required': '',
@@ -62,7 +62,7 @@ export class AddBudget {
 
     this.categoryWrap = new inputWrap(
       element('i', {
-        'class': 'fas fa-key'
+        'class': 'fas fa-chart-pie'
       }),
       element('select', {
         'required': '',
@@ -78,7 +78,7 @@ export class AddBudget {
 
     this.valueWrap = new inputWrap(
       element('i', {
-        'class': 'fas fa-key'
+        'class': 'fas fa-coins'
       }),
       element('input', {
         'type': 'number',
@@ -89,10 +89,8 @@ export class AddBudget {
     )
 
     this.submit = element('button', {
-      'class': 'gradient-border border-animated',
+      'class': 'button gradient-border border-animated',
       'type': 'submit',
-      'loadingText': 'Please wait.',
-      'defaultText': 'Submit',
       'innerText': 'Submit',
       'append': this.form
     })
@@ -109,7 +107,7 @@ export class AddBudget {
     const category = this.categoryWrap.input.value
     const value = this.valueWrap.input.value
 
-    submit.innerText = submit.loadingText
+    submit.innerText = 'Please wait.'
 
     try {
       const toFireStore = await budgetCollection()
@@ -126,7 +124,7 @@ export class AddBudget {
       this.destroy()
 
     } catch (error) {
-      submit.innerText = submit.defaultText
+      submit.innerText = 'Submit'
         await alert2({
           'title': 'Error',
           'message': error.message,
@@ -142,7 +140,7 @@ export class AddBudget {
 class inputWrap {
   constructor(icon, input, parent) {
     this.wrap = element('div', {
-      'class': 'input-wrap',
+      'class': 'input gradient-border bottom',
       'append': parent
     })
     this.icon = icon

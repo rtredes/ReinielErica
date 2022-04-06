@@ -138,5 +138,3 @@ try {
 } catch (e) {
   console.log(e)
 }
-
-const signin = new signIn()
