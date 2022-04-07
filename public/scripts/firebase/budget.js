@@ -96,7 +96,11 @@ export class AddBudget {
     })
   }
   destroy() {
-    this.fixedWrap.remove()
+    this.fixedWrap.classList.add('fadingOut')
+    this.fixedWrap.onanimationend = () => {
+      this.fixedWrap.remove()
+
+    }
   }
   
   
@@ -108,7 +112,7 @@ export class AddBudget {
     const value = this.valueWrap.input.value
 
     submit.innerText = 'Please wait.'
-
+    submit.disabled = 'true'
     try {
       const toFireStore = await budgetCollection()
       .doc().set({
@@ -125,6 +129,7 @@ export class AddBudget {
 
     } catch (error) {
       submit.innerText = 'Submit'
+      submit.disabled = false
         await alert2({
           'title': 'Error',
           'message': error.message,
