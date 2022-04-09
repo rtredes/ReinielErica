@@ -85,3 +85,10 @@ button {
 button:hover::before{
   background-position: 100% 100%;
 }
+
+/* Headings */
+
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}

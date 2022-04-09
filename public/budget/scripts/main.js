@@ -83,20 +83,16 @@ auth.onAuthStateChanged(async function() {
           {
             label: 'Other',
             data: [0, 0, 0, 0, 0, 0, 0],
-            borderColor: '#f9f6f2',
-            backgrounColor: '#f9f6f2',
+            borderColor: 'gray',
+            backgroundColor: 'gray',
           }
         ]
       }
     )
 
-    const loaders = [...document.querySelectorAll('.charts canvas + loader')]
-    loaders.forEach(loader => {
-      loader.remove()
-    })
     const ref = await budgetCollection()
       .where('timestamp', '>', dateStart)
-    
+
     live(ref, {
       'added': function(data) {
         const { timestamp, value, category, type } = data
@@ -110,12 +106,17 @@ auth.onAuthStateChanged(async function() {
         const datasetData = typesChart.data.datasets[types.indexOf(type)].data
         const datasetData2 = categoriesChart.data.datasets[categories.indexOf(category)].data
         const dateRange = Math.floor((timestamp.toDate() - dateEnd) / 1000 / 60 / 60 / 24)
-        
+
         datasetData[dateRange] += Number(value)
         datasetData2[dateRange] += type == 'outcome' ? Number(value) : 0
-        
+
         typesChart.update()
         categoriesChart.update()
+        
+        const loaders = [...document.querySelectorAll('.charts canvas + loader')]
+        loaders.forEach(loader => {
+          loader.remove()
+        })
       }
     })
 
@@ -146,13 +147,8 @@ function setChart(chart, { type, labels, datasets, title }) {
 }
 
 
-try {
-  document.getElementById('add').onclick = function() {
-    const add = new AddBudget()
-  }
-
-} catch (e) {
-  console.log(e)
+document.getElementById('add').onclick = function() {
+  const add = new AddBudget()
 }
 
 function shortenString(text, length) {
