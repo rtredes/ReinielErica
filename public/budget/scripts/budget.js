@@ -3,10 +3,10 @@ import {
   auth,
   months,
   timestamp
-} from "../firebase.js"
+} from "/scripts/firebase.js"
 
-import tredes from '../tredes.js'
-import alert2 from '../popups/alert.js'
+import tredes from '/scripts/tredes.js'
+import alert2 from '/scripts/popups/alert.js'
 const element = tredes.element
 
 export function budgetCollection(
