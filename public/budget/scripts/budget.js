@@ -70,7 +70,6 @@ export class AddBudget {
           { 'text': 'Select One', 'value': '' },
           { 'text': 'Commute', 'value': 'commute' },
           { 'text': 'Food', 'value': 'food' },
-          { 'text': 'Essential', 'value': 'essential' },
           { 'text': 'Other', 'value': 'other' },
         ]
       }), this.form
