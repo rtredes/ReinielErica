@@ -13,9 +13,6 @@ import {
 
 import signIn from '/scripts/popups/signIn.js'
 
-document.body.classList.remove('loading')
-
-
 auth.onAuthStateChanged(async function() {
   if (auth.currentUser) {
     const dateEnd = dateAddDay(
@@ -75,12 +72,6 @@ auth.onAuthStateChanged(async function() {
             backgroundColor: '#dbf8cd',
           },
           {
-            label: 'Essential',
-            data: [0, 0, 0, 0, 0, 0, 0],
-            borderColor: '#b2d1cc',
-            backgroundColor: '#b2d1cc',
-          },
-          {
             label: 'Other',
             data: [0, 0, 0, 0, 0, 0, 0],
             borderColor: 'gray',
@@ -100,7 +91,7 @@ auth.onAuthStateChanged(async function() {
           'outcome', 'savings'
         ]
         const categories = [
-          'commute', 'food', 'essential', 'other'
+          'commute', 'food', 'other'
         ]
 
         const datasetData = typesChart.data.datasets[types.indexOf(type)].data
@@ -124,6 +115,7 @@ auth.onAuthStateChanged(async function() {
   else {
     const signin = new signIn()
   }
+  document.body.classList.remove('loading')
 })
 
 function setChart(chart, { type, labels, datasets, title }) {
