@@ -1,0 +1,94 @@
+@import 'custom.css';
+html {
+  --black: #181A2D;
+  --gradientBorder: linear-gradient(120deg, red, orange, yellow);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 10px;
+  min-height: 100vh;
+  background: var(--black);
+  
+}
+body {
+  color: white;
+}
+
+body.loading::before,
+body.loading::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--black);
+  z-index: 99999;
+}
+body.loading::after{
+  --size: 25vw;
+  background: none;
+  top: calc(50% - var(--size)/2);
+  left: calc(50% - var(--size)/2);
+  right: revert;
+  bottom: revert;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: .75rem dashed white;
+  animation: rotate 2s infinite linear;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+body>section {
+  padding: 3% 6%;
+  
+}
+
+body>section>div.row {
+  display: flex;
+  max-width: 1140;
+  margin: auto;
+}
+
+body>section>div.row>div.col {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  body>section>div.row {
+    flex-direction: column;
+  }
+}
+
+/* Button */
+
+
+button {
+  padding: .5em 2.5em;
+  border: none;
+  color: white;
+  border-radius: 9999px;
+  background: var(--buttonBg);
+ 
+}
+button:hover::before{
+  background-position: 100% 100%;
+}
+
+/* Headings */
+
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+.banner .background{
+  background-image: url(/images/background/ReinEca.jpg);
+}
+.banner .background-overlay {
+  background-color: var(--color6);
+  opacity: .45;
+}
+
+.banner {
+  color: #0e1111 ;
+  padding-bottom: 125px;
+  padding-top: 125px;
+  text-shadow: 0 0 2px var(--color1);
+  
+}
+
+.banner .column:nth-child(1){
+  width: 55%;
+}
+.banner .column:nth-child(2){
+  width: 45%;
+}
+.signin-txt{
+  font-weight: bold;
+}

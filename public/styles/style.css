@@ -1,0 +1,21 @@
+@import 'defaults.css';
+
+
+html {
+  font-size: 10px;
+  --font: arial;
+  --primaryColor: white;
+  --accent: dodgerblue;
+  --bg: black;
+  --buttonBg: black;
+  
+  /* New Theme */
+  
+  --color1: #a17a69;
+  --color2: #b5927f;
+  --color3: #ceaa9a;
+  --color4: #dabcb2;
+  --color5: #ebcdc3;
+  --color6: #ebdbd5;
+  
+}

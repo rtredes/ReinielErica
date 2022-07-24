@@ -1,0 +1,14 @@
+header {
+  background-color: var(--color5);
+  box-shadow: 0 2px 15px rgba(0,0,0,.35);
+}
+#menu-bar {
+  font-size: 5rem;
+  color: black;
+}
+
+header #logo {
+  width: 175px;
+  max-height: 60px;
+  
+}

@@ -1,0 +1,51 @@
+@import 'nude-theme/default.css';
+@import 'tags-styles.css';
+
+html {
+  font-size: clamp(9px, 0.521vw, 10px);
+  --font: arial;
+  
+  --color1: #a17a69;
+  --color2: #b5927f;
+  --color3: #ceaa9a;
+  --color4: #dabcb2;
+  --color5: #ebcdc3;
+  --color6: #ebdbd5;
+  
+  --max-width: 1140px;
+}
+body {
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+p {
+  font-size: 1.8rem;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2.5rem;
+}
+h4 {
+  font-size: 2.25rem;
+}
+h5 {
+  font-size: 2rem;
+}
+h6 {
+  font-size: 1.9rem;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  color: inherit;
+}
